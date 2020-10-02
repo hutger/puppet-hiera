@@ -2,7 +2,7 @@
 profiles::base_linux::manage_users: true
 profiles::base_linux::manage_ssh_keys: true
 profiles::base_linux::managed_users_hash:
-  jarek:
+  hutger:
     ensure: present
 profiles::base_linux::managed_ssh_keys_hash:
   "hutger_key":
