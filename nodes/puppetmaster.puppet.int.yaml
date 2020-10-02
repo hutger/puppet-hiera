@@ -1,0 +1,96 @@
+---
+classes:
+  - roles::puppet::master
+
+# Puppet master and agent configuration
+puppet::server: true
+puppet::server_foreman: false
+puppet::server_reports: "puppetdb"
+puppet::server_puppetdb_host: "%{lookup('puppetdb_host_name')}"
+puppet::server_storeconfigs_backend: "puppetdb"
+puppet::autosign: "/etc/puppetlabs/puppet/autosign.conf"
+puppet::autosign_entries:
+  - "*.puppet.aws"
+puppet::server_certname: "%{lookup('puppetmaster_connection_host_name')}"
+puppet::client_certname: "%{lookup('puppetmaster01_host_name')}"
+puppet::environment: "%{environment}"
+puppet::dns_alt_names:
+  - "%{lookup('puppetmaster_connection_host_name')}"
+puppet::hiera_config: "/etc/puppetlabs/puppet/hiera.yaml"
+puppet::ca_server: "%{lookup('puppetmaster_connection_host_name')}"
+puppet::puppetmaster: "%{lookup('puppetmaster_connection_host_name')}"
+puppet::server_external_nodes: ""
+puppet::server_common_modules_path: ""
+puppet::server_cipher_suites:
+  [
+    "TLS_RSA_WITH_AES_256_CBC_SHA256",
+    "TLS_RSA_WITH_AES_256_CBC_SHA",
+    "TLS_RSA_WITH_AES_128_CBC_SHA256",
+    "TLS_RSA_WITH_AES_128_CBC_SHA",
+  ]
+puppet::server_ca_allow_sans: true
+
+# R10k
+r10k::deploy_settings:
+  purge_levels:
+    - "environment"
+    - "puppetfile"
+r10k::sources:
+  puppet:
+    remote: "git@github.com:dogjarek/puppet-main.git"
+    basedir: "/etc/puppetlabs/code/environments"
+  hiera:
+    remote: "git@github.com:dogjarek/puppet-hiera.git"
+    basedir: "/etc/puppetlabs/code/hieradata"
+r10k::git_settings:
+  private_key: "/etc/puppetlabs/r10k/r10k.rsa"
+
+# Hiera configuration
+### IMPORTANT ###
+### %%{::} is an escape character in hiera for %{::variable} notation
+
+hiera::hiera_version: "5"
+hiera::hiera5_defaults:
+  datadir: "/etc/puppetlabs/code/hieradata/%%{::}{environment}"
+  data_hash: "yaml_data"
+hiera::hierarchy:
+  - name: "Nodes configuration"
+    path: "nodes/%%{::}{::trusted.certname}.yaml"
+  - name: "Operating system type (Linux/Windows) configuration"
+    path: "ostype/%%{::}{::facts.kernel}.yaml"
+  - name: "Server Role configuration"
+    path: "server_role/%%{::}{::facts.server_role}.yaml"
+  - name: "Platform configuration"
+    path: "platform/%%{::}{::facts.platform}.yaml"
+  - name: "Common configuration"
+    path: "common.yaml"
+  - name: "Per-node Encrypted data"
+    path: "nodes/%%{::}{::trusted.certname}.eyaml"
+    lookup_key: "eyaml_lookup_key"
+    options:
+      pkcs7_private_key: /etc/puppetlabs/puppet/keys/private_key.pkcs7.pem
+      pkcs7_public_key: /etc/puppetlabs/puppet/keys/public_key.pkcs7.pem
+  - name: "Per-OS (Windows/Linux) Encrypted data"
+    path: "ostype/%%{::}{::facts.kernel}.eyaml"
+    lookup_key: "eyaml_lookup_key"
+    options:
+      pkcs7_private_key: /etc/puppetlabs/puppet/keys/private_key.pkcs7.pem
+      pkcs7_public_key: /etc/puppetlabs/puppet/keys/public_key.pkcs7.pem
+  - name: "Per Server Role Encrypted data"
+    path: "server_role/%%{::}{::facts.server_role}.eyaml"
+    lookup_key: "eyaml_lookup_key"
+    options:
+      pkcs7_private_key: /etc/puppetlabs/puppet/keys/private_key.pkcs7.pem
+      pkcs7_public_key: /etc/puppetlabs/puppet/keys/public_key.pkcs7.pem
+  - name: "Per platform Encrypted data"
+    path: "platform/%%{::}{::facts.platform}.eyaml"
+    lookup_key: "eyaml_lookup_key"
+    options:
+      pkcs7_private_key: /etc/puppetlabs/puppet/keys/private_key.pkcs7.pem
+      pkcs7_public_key: /etc/puppetlabs/puppet/keys/public_key.pkcs7.pem
+  - name: "Common Encrypted data"
+    path: "common.eyaml"
+    lookup_key: "eyaml_lookup_key"
+    options:
+      pkcs7_private_key: /etc/puppetlabs/puppet/keys/private_key.pkcs7.pem
+      pkcs7_public_key: /etc/puppetlabs/puppet/keys/public_key.pkcs7.pem
