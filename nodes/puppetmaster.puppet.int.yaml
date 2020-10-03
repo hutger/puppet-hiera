@@ -10,7 +10,7 @@ puppet::server_puppetdb_host: "%{lookup('puppetdb_host_name')}"
 puppet::server_storeconfigs_backend: "puppetdb"
 puppet::autosign: "/etc/puppetlabs/puppet/autosign.conf"
 puppet::autosign_entries:
-  - "*.puppet.aws"
+  - "*.puppet.int"
 puppet::server_certname: "%{lookup('puppetmaster_connection_host_name')}"
 puppet::client_certname: "%{lookup('puppetmaster01_host_name')}"
 puppet::environment: "%{environment}"
@@ -37,10 +37,10 @@ r10k::deploy_settings:
     - "puppetfile"
 r10k::sources:
   puppet:
-    remote: "git@github.com:dogjarek/puppet-main.git"
+    remote: "git@github.com:hutger/puppet-main.git"
     basedir: "/etc/puppetlabs/code/environments"
   hiera:
-    remote: "git@github.com:dogjarek/puppet-hiera.git"
+    remote: "git@github.com:hutger/puppet-hiera.git"
     basedir: "/etc/puppetlabs/code/hieradata"
 r10k::git_settings:
   private_key: "/etc/puppetlabs/r10k/r10k.rsa"
