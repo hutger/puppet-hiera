@@ -14,4 +14,6 @@ puppet::environment: "%{environment}"
 # PuppetDB config
 puppetdb::listen_address: "%{lookup('puppetdb_host_name')}"
 puppetdb::manage_firewall: false
+puppetdb::database_host: "%{lookup('pgsql_host_name')}"
+puppetdb::manage_database: false
 puppetdb::cipher_suites: "TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA"
