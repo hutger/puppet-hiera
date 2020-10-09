@@ -1,6 +1,6 @@
 ---
 classes:
-  - profiles::base_linux
+#  - profiles::base_linux
   - roles::base_linux
 
 profiles::base_linux::manage_users: true
