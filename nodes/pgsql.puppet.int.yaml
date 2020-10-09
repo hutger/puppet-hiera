@@ -11,7 +11,7 @@ postgresql::server::listen_addresses: "%{lookup('pgsql_host_name')}"
 postgresql::server::postgres_password: 'kermit'
 
 
-profile::postgresql::server::dbs:
+profiles::postgresql::server::dbs:
   'gitlabhq_production2':
     user:       'gitlab'  
     password:   "postgresql_password('gitlab', 'kermit')"
@@ -23,4 +23,3 @@ profile::postgresql::server::dbs:
 postgresql::server::role:
   'gitlab':
     superuser: true
-  
