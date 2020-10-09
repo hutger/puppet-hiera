@@ -2,17 +2,25 @@
 #    classes:
 #     - roles::linux::base
 
-    # Puppet agent configuration
-    
-    puppet::agent: true
-    puppet::manage_packages: "agent"
-    puppet::runmode: "service"
-    puppet::puppetmaster: "%{lookup('puppetmaster_connection_host_name')}"
-    puppet::ca_server: "%{lookup('puppetmaster_connection_host_name')}"
-    puppet::environment: "%{environment}"
-    
-#    # PuppetDB config
-#    puppetdb::listen_address: "%{lookup('puppetdb_host_name')}"
-#    puppetdb::manage_firewall: false
-#    puppetdb::cipher_suites: "TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA"
-    
+# Puppet agent configuration
+
+puppet::agent: true
+puppet::manage_packages: "agent"
+puppet::runmode: "service"
+puppet::puppetmaster: "%{lookup('puppetmaster_connection_host_name')}"
+puppet::ca_server: "%{lookup('puppetmaster_connection_host_name')}"
+puppet::environment: "%{environment}"
+
+gitlab::external_url: 'http://gitlab.puppet.int'
+gitlab::gitlab_rails:
+  gitlab_email_enabled: false
+  gitlab_default_theme: 2
+  time_zone: 'UTC'
+  db_adapter: 'postgresql'
+  db_host: 'postgresql'
+  db_password: 'kermit123'
+  gitlab_email_enabled: false
+  gitlab_default_theme: 4
+  gitlab_email_display_name: 'GitLab'
+gitlab::postgresql:
+    enable: false
