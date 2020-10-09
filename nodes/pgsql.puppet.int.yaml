@@ -17,7 +17,7 @@ profiles::postgresql::server::roles:
     superuser: true
 
 profiles::postgresql::server::dbs:
-  gitlabhq_production2:
+  gitlabhq_production:
     user:       'gitlab'  
     password:   "postgresql_password('gitlab', 'kermit')"
     grant:      'ALL'
