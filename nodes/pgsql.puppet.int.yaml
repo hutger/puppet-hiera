@@ -2,6 +2,7 @@
 classes:
   - postgresql::globals
   - postgresql::server
+  - profiles::postgresql::server
 
 postgresql::globals::manage_package_repo:  true
 postgresql::globals::version: '12'
@@ -12,7 +13,7 @@ postgresql::server::postgres_password: 'kermit'
 
 
 profiles::postgresql::server::dbs:
-  'gitlabhq_production2':
+  gitlabhq_production2:
     user:       'gitlab'  
     password:   "postgresql_password('gitlab', 'kermit')"
     grant:      'ALL'
