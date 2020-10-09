@@ -6,10 +6,10 @@ classes:
 postgresql::globals::manage_package_repo:  true
 postgresql::globals::version: '12'
 
-postgresql::server:
-  listen_addresses:         '${pgsql_host_name}'
-  postgres_password:        'kermit'
-  ip_mask_allow_all_users:  '0.0.0.0/0'
+postgresql::server::ip_mask_allow_all_users: '0.0.0.0/0'
+postgresql::server::listen_addresses: "%{lookup('pgsql_host_name')}"
+postgresql::server::postgres_password: 'kermit'
+
 
 postgresql::server::db:
   'gitlabhq_production':
