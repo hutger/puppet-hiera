@@ -1,7 +1,6 @@
 ---
 classes:
   - profiles::base_linux
-  - gitlab
 
 profiles::base_linux::manage_users: true
 profiles::base_linux::manage_ssh_keys: true

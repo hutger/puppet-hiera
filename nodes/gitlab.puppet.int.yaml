@@ -4,12 +4,12 @@ classes:
 
 # Puppet agent configuration
 
-puppet::agent: true
-puppet::manage_packages: "agent"
-puppet::runmode: "service"
-puppet::puppetmaster: "%{lookup('puppetmaster_connection_host_name')}"
-puppet::ca_server: "%{lookup('puppetmaster_connection_host_name')}"
-puppet::environment: "%{environment}"
+#puppet::agent: true
+#puppet::manage_packages: "agent"
+#puppet::runmode: "service"
+#puppet::puppetmaster: "%{lookup('puppetmaster_connection_host_name')}"
+#puppet::ca_server: "%{lookup('puppetmaster_connection_host_name')}"
+#puppet::environment: "%{environment}"
 
 gitlab::external_url: 'http://gitlab.puppet.int'
 gitlab::gitlab_rails:
