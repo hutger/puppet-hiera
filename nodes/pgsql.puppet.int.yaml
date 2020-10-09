@@ -13,9 +13,6 @@ postgresql::server:
   postgres_password:        'kermit'
   ip_mask_allow_all_users:  '0.0.0.0/0'
 
-puppetdb::database::postgresql:
-   manage_server: false
-
 postgresql::server::db:
   'gitlabhq_production':
     user:       'gitlab'
