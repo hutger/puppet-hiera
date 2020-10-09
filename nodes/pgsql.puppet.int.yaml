@@ -1,10 +1,10 @@
 ---
 classes:
-  - postgresql::globals
+#  - postgresql::globals
   - postgresql::server
 
 postgresql::globals::manage_package_repo:  true
-postgresql::globals:::version: '12'
+postgresql::globals::version: '12'
 
 postgresql::server:
   listen_addresses:         '${pgsql_host_name}'
