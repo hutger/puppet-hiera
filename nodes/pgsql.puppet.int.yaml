@@ -1,6 +1,6 @@
 ---
 classes:
-#  - postgresql::globals
+  - postgresql::globals
   - postgresql::server
 
 postgresql::globals::manage_package_repo:  true
@@ -11,10 +11,10 @@ postgresql::server::listen_addresses: "%{lookup('pgsql_host_name')}"
 postgresql::server::postgres_password: 'kermit'
 
 
-postgresql::server::db:
+profile::postgresql::server::dbs:
   'gitlabhq_production':
-    user:       'gitlab'
-    password:   'kermit123'
+    user:       'gitlab'  
+    password:   "postgresql_password('gitlab', 'kermit')"
     grant:      'ALL'
     owner:      'gitlab'
 
