@@ -17,7 +17,7 @@ gitlab::gitlab_rails:
   gitlab_default_theme: 2
   time_zone: 'UTC'
   db_adapter: 'postgresql'
-  db_host: 'postgresql'
+  db_host: "%{lookup('pgsql_host_name')}"
   db_password: 'kermit123'
   gitlab_email_enabled: false
   gitlab_default_theme: 4
