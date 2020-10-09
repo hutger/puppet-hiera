@@ -12,8 +12,8 @@ postgresql::server::listen_addresses: "%{lookup('pgsql_host_name')}"
 postgresql::server::postgres_password: 'kermit'
 
 # Alter to 'false' after the first deployment
-postgresql::server::role:
-  'gitlab':
+profiles::postgresql::server::roles:
+  gitlab:
     superuser: true
 
 #profiles::postgresql::server::dbs:
