@@ -1,4 +1,10 @@
 ---
+classes:
+  - postgresql::globals
+  - postgresql::server
+  - puppetdb::database::postgresql
+  - postgresql::server::db
+  - postgresql::server::role
 
 postgresql::globals:
   manage_package_repo:  true
