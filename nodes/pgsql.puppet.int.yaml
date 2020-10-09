@@ -12,7 +12,7 @@ postgresql::server::postgres_password: 'kermit'
 
 
 profile::postgresql::server::dbs:
-  'gitlabhq_production':
+  'gitlabhq_production2':
     user:       'gitlab'  
     password:   "postgresql_password('gitlab', 'kermit')"
     grant:      'ALL'
