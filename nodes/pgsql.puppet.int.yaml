@@ -16,11 +16,11 @@ profiles::postgresql::server::roles:
   gitlab:
     superuser: true
 
-#profiles::postgresql::server::dbs:
-#  gitlabhq_production2:
-#    user:       'gitlab'  
-#    password:   "postgresql_password('gitlab', 'kermit')"
-#    grant:      'ALL'
-#    owner:      'gitlab'
+profiles::postgresql::server::dbs:
+  gitlabhq_production2:
+    user:       'gitlab'  
+    password:   "postgresql_password('gitlab', 'kermit')"
+    grant:      'ALL'
+    owner:      'gitlab'
 
 
