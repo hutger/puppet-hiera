@@ -1,11 +1,14 @@
 ---
+classes:
+  - profiles::base_linux
+
 profiles::base_linux::manage_users: true
 profiles::base_linux::manage_ssh_keys: true
 profiles::base_linux::managed_users_hash:
   hutger:
     ensure: present
-    hutger2:
-      ensure: present
+  hutger2:
+    ensure: absent
 profiles::base_linux::managed_ssh_keys_hash:
   "hutger_key":
     user: "hutger"
