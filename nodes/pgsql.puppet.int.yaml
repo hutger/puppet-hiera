@@ -1,31 +1,27 @@
 ---
-classes:
 
-# Puppet agent configuration
+postgresql::globals:
+  manage_package_repo:  true
+  version:              '12'
 
-puppet::agent: true
-puppet::manage_packages: "agent"
-puppet::runmode: "service"
-puppet::puppetmaster: "%{lookup('puppetmaster_connection_host_name')}"
-puppet::ca_server: "%{lookup('puppetmaster_connection_host_name')}"
-puppet::environment: "%{environment}"
+postgresql::server:
+  listen_addresses:         '${pgsql_host_name}'
+  postgres_password:        'kermit'
+  ip_mask_allow_all_users:  '0.0.0.0/0'
 
-#    # PuppetDB config
-#    puppetdb::listen_address: "%{lookup('puppetdb_host_name')}"
-#    puppetdb::manage_firewall: false
-#    puppetdb::cipher_suites: "TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA"
+puppetdb::database::postgresql:
+   manage_server: false
 
+postgresql::server::db:
+  'gitlabhq_production':
+    user:       'gitlab'
+    password:   'kermit123'
+    grant:      'ALL'
+    owner:      'gitlab'
 
+# Alter to 'false' after the first deployment
 
-#postgresql::server::db { 'gitlabhq_production':
-#    user     => 'gitlab',
-#    password => postgresql::postgresql_password('gitlab', 'kermit123'),
-#    grant    => 'ALL',
-#    owner    => 'gitlab',
-#  }
-
-
-  # Alter to 'false' after the first deployment
-  postgresql::server::role { 'gitlab':
-   superuser => true,
-  }
+postgresql::server::role:
+  'gitlab':
+    superuser: true
+  
