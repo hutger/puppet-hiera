@@ -1,7 +1,7 @@
 ---
     classes:
-#      - roles::puppet::db
-    
+      - roles::linux::base
+
     # Puppet agent configuration
     
     puppet::agent: true
