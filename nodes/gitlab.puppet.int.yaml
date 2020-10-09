@@ -1,6 +1,6 @@
 ---
-    classes:
-      - roles::linux::base
+#    classes:
+#     - roles::linux::base
 
     # Puppet agent configuration
     
