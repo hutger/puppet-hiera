@@ -8,7 +8,7 @@ profiles::base_linux::managed_users_hash:
   hutger:
     ensure: present
   hutger2:
-    ensure: absent
+    ensure: present
 profiles::base_linux::managed_ssh_keys_hash:
   "hutger_key":
     user: "hutger"
