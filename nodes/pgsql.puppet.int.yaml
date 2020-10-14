@@ -19,8 +19,8 @@ profiles::postgresql::server::roles:
 profiles::postgresql::server::dbs:
   gitlabhq_production:
     user:       'gitlab'  
-    #password:   "postgresql_password('gitlab', 'kermit')"
-    password:   'kermit'
+    #password:   "postgresql_password('gitlab', 'pro123')"
+    password:   'pro123'
     grant:      'ALL'
     owner:      'gitlab'
 
