@@ -8,7 +8,7 @@ postgresql::globals::manage_package_repo:  true
 postgresql::globals::version: '12'
 
 postgresql::server::ip_mask_allow_all_users: '0.0.0.0/0'
-postgresql::server::listen_addresses: "%{lookup('pgsql_host_name')}"
+postgresql::server::listen_addresses: "%{lookup('puppetsql_host_name')}"
 postgresql::server::postgres_password: 'kermit'
 
 # Alter to 'false' after the first deployment

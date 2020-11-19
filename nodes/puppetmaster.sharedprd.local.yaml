@@ -10,7 +10,7 @@ puppet::server_puppetdb_host: "%{lookup('puppetdb_host_name')}"
 puppet::server_storeconfigs_backend: "puppetdb"
 puppet::autosign: "/etc/puppetlabs/puppet/autosign.conf"
 puppet::autosign_entries:
-  - "*.puppet.int"
+  - "*.sharedprd.local"
 puppet::server_certname: "%{lookup('puppetmaster_connection_host_name')}"
 puppet::client_certname: "%{lookup('puppetmaster01_host_name')}"
 puppet::environment: "%{environment}"

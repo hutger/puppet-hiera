@@ -2,13 +2,13 @@
 classes:
   - gitlab
 
-gitlab::external_url: 'http://gitlab.puppet.int'
+gitlab::external_url: 'http://gitlab.sharedprd.local'
 gitlab::gitlab_rails:
   gitlab_email_enabled: false
   gitlab_default_theme: 2
   time_zone: 'UTC'
   db_adapter: 'postgresql'
-  db_host: "%{lookup('pgsql_host_name')}"
+  db_host: "%{lookup('puppetsql_host_name')}"
   db_password: 'pro123'
   gitlab_email_enabled: false
   gitlab_default_theme: 4
