@@ -2,7 +2,7 @@
 classes:
   - gitlab
 
-gitlab::external_url: 'http://gitlab.sharedprd.local'
+gitlab::external_url: 'http://gitlab.puppet.int'
 gitlab::gitlab_rails:
   gitlab_email_enabled: false
   gitlab_default_theme: 2
