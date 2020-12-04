@@ -13,3 +13,11 @@ roles::haproxy::server::frontends:
       'capture request header' : 'X-Forwarded-For len 50'
       option                   : [ 'httplog', 'http-server-close' ]
     collect_exported : false
+
+
+roles::haproxy::server::backends:
+  prx01-dev_http_backend:
+    options:
+      'balance'        : 'roundrobin'
+      'capture request header' : 'X-Forwarded-For len 50'
+      option                   : [ 'httplog', 'http-server-close' ]
