@@ -21,4 +21,13 @@ roles::haproxy::server::backends:
     mode      : http
     options:
       'balance'        : 'roundrobin'
-      option                   : [ 'httplog', 'http-server-close' ]
+      option           : [ 'httplog', 'http-server-close' ]
+
+
+roles::haproxy::server::balancermembers:
+  server00:
+    listening_service : 'prx01-dev_http'
+    server_names      : 'server00.example.com'
+    ipaddresses       : '10.0.0.10'
+    ports             : '8080'
+    options           : 'check'
