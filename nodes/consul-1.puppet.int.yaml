@@ -12,7 +12,7 @@ roles::haproxy::server::frontends:
       'default_backend'        : 'prx01-dev_http_backend'
       'redirect scheme'        : 'https code 301 if !{ ssl_fc }'
       'capture request header' : 'X-Forwarded-For len 50'
-      option                   : [ 'httplog', 'http-server-close' ]
+      option                   : [ 'http-server-close' ]
     collect_exported : false
 
 
@@ -27,7 +27,7 @@ roles::haproxy::server::backends:
 roles::haproxy::server::balancermembers:
   server00:
     listening_service : 'prx01-dev_http'
-    server_names      : 'server00.example.com'
-    ipaddresses       : '10.0.0.10'
+    server_names      : [ 'server01', 'server02' ] 
+    ipaddresses       : [ '10.0.0.10', '10.0.0.11' ]
     ports             : '8080'
-    options           : 'check'
+    options           : ''
