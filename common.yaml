@@ -13,7 +13,7 @@ puppetmaster01_cname: "puppetmaster.puppet.int"
 puppetmaster01_host_name: "puppetmaster.puppet.int"
 puppetdb_cname: "puppetdb.puppet.int"
 puppetdb_host_name: "puppetdb.puppet.int"
-puppetsql_host_name: "puppetsql.puppet.int"
-puppetsql_cname: "puppetsql.puppet.int"
+puppetsql_host_name: "pgsql.puppet.int"
+puppetsql_cname: "pgsql.puppet.int"
 
 
