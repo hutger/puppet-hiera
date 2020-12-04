@@ -26,7 +26,7 @@ roles::haproxy::server::backends:
 
 roles::haproxy::server::balancermembers:
   server00:
-    listening_service : 'prx01-dev_http'
+    listening_service : 'prx01-dev_http_backend'
     server_names      : [ 'server01', 'server02' ] 
     ipaddresses       : [ '10.0.0.10', '10.0.0.11' ]
     ports             : '8080'
