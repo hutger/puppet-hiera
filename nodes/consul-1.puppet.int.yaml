@@ -18,5 +18,7 @@ roles::haproxy::server::frontends:
 
 roles::haproxy::server::backends:
   prx01-dev_http_backend:
+    mode      : http
     options:
       'balance'        : 'roundrobin'
+      option                   : [ 'httplog', 'http-server-close' ]
