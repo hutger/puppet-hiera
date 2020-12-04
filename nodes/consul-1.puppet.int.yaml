@@ -1,3 +1,15 @@
 ---
 classes:
   - roles::haproxy::server
+
+roles::haproxy::server::frontends:
+prx01-dev_http:
+  ipaddress : "%{::ipaddress}"
+  ports     : '8080'
+  mode      : http
+  options:
+    # Permanent redirect from http to https
+    'redirect scheme'        : 'https code 301 if !{ ssl_fc }'
+    'capture request header' : 'X-Forwarded-For len 50'
+    option                   : [ 'httplog', 'http-server-close' ]
+  collect_exported : false
