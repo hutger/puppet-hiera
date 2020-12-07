@@ -59,7 +59,7 @@ roles::squid::server::cache_dir:
 roles::squid::server::acls:
   internal_network:
     type          : 'src'
-    entries       : [ '10.10.10.0/24', '10.10.20.0/24' ]
+    entries       : [ '10.10.10.0/24', '10.10.20.0/24', '10.10.30.0/24' ]
 
   remote_urls:
     type          : 'url_regex'
