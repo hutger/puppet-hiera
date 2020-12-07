@@ -4,6 +4,10 @@ classes:
   - roles::squid::server
 
 
+#------------------------------------------------------------------------------
+# HAProxy DEFINITIONS
+# For a full documentation, please refer to https://forge.puppet.com/modules/puppet/haproxy/readme
+
 roles::haproxy::server::frontends:
   prx01-dev_http:
     ipaddress : "%{::ipaddress}"
@@ -37,6 +41,7 @@ roles::haproxy::server::balancermembers:
 
 #------------------------------------------------------------------------------
 # SQUID DEFINITIONS
+# For a full documentation, please refer to https://forge.puppet.com/modules/puppet/squid/readme
 
 roles::squid::server::cache_mem: '768 MB'
 roles::squid::server::workers: 3
@@ -47,20 +52,17 @@ roles::squid::server::http_port:
     options: 'accel vhost'
 
 roles::squid::server::cache_dir:
-  /data:
+  '/data':
     type           : 'ufs'
     options        : '15000 32 256 min-size=32769'
     process_number : 2
 
-
-# Please refer to http://www.squid-cache.org/Doc/config/acl/
-
 roles::squid::server::acls:
-  internal_network:
+  'internal_network':
     type          : 'src'
     entries       : [ '10.10.10.0/24', '10.10.20.0/24', '10.10.30.0/24' ]
 
-  remote_urls:
+  'remote_urls':
     type          : 'url_regex'
     entries       : [ 'http://example.org/path', 'http://example.com/anotherpath']
 
@@ -68,7 +70,7 @@ roles::squid::server::acls:
     type          : 'port'
     entries       : [ '80', '8080']
 
-  all:
+  'all':
     type          : 'src'
     entries       : [ 'all']
 
