@@ -1,6 +1,8 @@
 ---
 classes:
   - roles::haproxy::server
+  - roles::squid::server
+
 
 roles::haproxy::server::frontends:
   prx01-dev_http:
@@ -31,3 +33,11 @@ roles::haproxy::server::balancermembers:
     ipaddresses       : [ '10.0.0.10', '10.0.0.11' ]
     ports             : '8080'
     options           : ''
+
+
+
+
+roles::squid::server::squid_basics:
+  cache_mem    : '512 MB'
+  workers      : '3'
+  coredump_dir : '/var/spool/squid'
