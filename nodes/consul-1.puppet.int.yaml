@@ -46,4 +46,4 @@ roles::squid::server::cache_dir:
   /data:
     type           : 'ufs'
     options        : '15000 32 256 min-size=32769'
-    process_number : '2'
+    process_number : 2
