@@ -42,7 +42,7 @@ roles::squid::server::squid_basics:
   workers      : '3'
   coredump_dir : '/var/spool/squid'
 
-roles::squid::server::squid_cache_dir:
+roles::squid::server::cache_dir:
   /data:
     type           : 'ufs'
     options        : '15000 32 256 min-size=32769'
