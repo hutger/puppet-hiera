@@ -36,14 +36,54 @@ roles::haproxy::server::balancermembers:
 
 
 
+#------------------------------------------------------------------------------
+# SQUID DEFINITIONS
 
 roles::squid::server::squid_basics:
   cache_mem    : '512 MB'
   workers      : '3'
   coredump_dir : '/var/spool/squid'
+  http_port    : '8080'
 
 roles::squid::server::cache_dir:
   /data:
     type           : 'ufs'
     options        : '15000 32 256 min-size=32769'
     process_number : 2
+
+
+# Please refer to http://www.squid-cache.org/Doc/config/acl/
+
+roles::squid::server::acls:
+  internal_network:
+    type          : 'src'
+    entries       : [ '10.10.10.0/24', '10.10.20.0/24' ]
+
+  remote_urls:
+    type          : 'url_regex'
+    entries       : [ 'http://example.org/path', 'http://example.com/anotherpath']
+
+  'Safe_ports':
+    type          : 'port'
+    entries       : [ '80', '8080']
+
+  all:
+    type          : 'src'
+    entries       : [ '0.0.0.0/0']
+
+  
+
+
+roles::squid::server::http_accesses:
+  'internal_network':
+    action          : 'allow'
+
+  remote_urls:
+    action          : 'allow'
+
+  '!Safe_ports':
+    action          : 'deny'
+
+  'all':
+    action          : 'deny'
+
