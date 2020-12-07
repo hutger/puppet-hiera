@@ -39,7 +39,8 @@ roles::haproxy::server::balancermembers:
 #------------------------------------------------------------------------------
 # SQUID DEFINITIONS
 
-roles::squid::server::basics::cache_mem: '512 MB'
+roles::squid::server::basics:
+  cache_mem: '512 MB'
 #  workers      : '3'
 #  coredump_dir : '/var/spool/squid'
 #  http_ports   : [ '3128' ]
