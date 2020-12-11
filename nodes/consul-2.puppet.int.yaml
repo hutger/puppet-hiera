@@ -1,4 +1,7 @@
 ---
+classes:
+  - prometheus
+  
 prometheus::manage_prometheus_server: true
 
 prometheus::version: '2.0.0'
