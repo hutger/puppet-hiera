@@ -1,6 +1,7 @@
 ---
 classes:
   - roles::puppet::db
+  - prometheus::node_exporter
 
 # Puppet agent configuration
 
