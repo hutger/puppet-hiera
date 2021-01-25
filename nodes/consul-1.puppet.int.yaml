@@ -98,6 +98,7 @@ profiles::netplan::purge_config: true
 profiles::netplan::netplan_apply: true
 profiles::netplan::config_file: '/etc/netplan/02-custom.yaml'
 profiles::netplan::ethernets:
+  ethernets:
     eth0:
       dhcp4: no
       addresses:
