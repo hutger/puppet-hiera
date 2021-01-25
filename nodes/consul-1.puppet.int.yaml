@@ -93,7 +93,7 @@ roles::squid::server::http_accesses:
 
 
 profiles::netplan::version: 2
-profiles::netplan::renderer: NetworkManager
+profiles::netplan::renderer: networkd
 profiles::netplan::purge_config: true
 profiles::netplan::netplan_apply: true
 profiles::netplan::config_file: '/etc/netplan/02-custom.yaml'
