@@ -2,6 +2,8 @@
 classes:
   - roles::haproxy::server
   - roles::squid::server
+  - netplan
+
 
 
 #------------------------------------------------------------------------------
@@ -90,3 +92,20 @@ roles::squid::server::http_accesses:
   'all':
     action          : 'deny'
 
+
+---
+
+netplan::version: 2
+netplan::renderer: networkd
+netplan::purge_config: true
+netplan::ethernets:
+    eth0:
+      dhcp4: yes
+      addresses:
+        - 192.168.50.101/24
+      nameservers:
+        search: [puppet.int, bar.local]
+        addresses: [8.8.8.8, 4.4.4.4]
+      routes:
+        - to: 0.0.0.0/0
+          via: 192.168.50.1
