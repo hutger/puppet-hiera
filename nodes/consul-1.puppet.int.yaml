@@ -94,7 +94,7 @@ roles::squid::server::http_accesses:
 
 ---
 
-netplan::version: 2
+netplan::version: '2'
 netplan::renderer: networkd
 netplan::purge_config: false
 netplan::config_file: '/etc/netplan/01-custom.yaml'
