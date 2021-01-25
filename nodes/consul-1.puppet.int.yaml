@@ -5,7 +5,6 @@ classes:
   - profiles::netplan
 
 
-
 #------------------------------------------------------------------------------
 # HAProxy DEFINITIONS
 # For a full documentation, please refer to https://forge.puppet.com/modules/puppet/haproxy/readme
