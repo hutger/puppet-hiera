@@ -98,15 +98,16 @@ profiles::netplan::purge_config: true
 profiles::netplan::netplan_apply: true
 profiles::netplan::config_file: '/etc/netplan/02-custom.yaml'
 profiles::netplan::ethernets:
-  eth0:
-    dhcp4: yes
-    addresses:
-    - 192.168.50.101/24
-    nameservers:
-      search: [puppet.int, bar.test]
-      addresses: [8.8.8.8, 4.4.4.4]
-    routes:
-    - to: 0.0.0.0/0
-      via: 192.168.50.1
-    - to: 10.0.0.0/24
-      via: 192.168.50.10
+  ethernets:
+    eth0:
+      dhcp4: yes
+      addresses:
+        - 192.168.50.101/24
+      nameservers:
+        search: [puppet.int, bar.test]
+        addresses: [8.8.8.8, 4.4.4.4]
+      routes:
+        - to: 0.0.0.0/0
+          via: 192.168.50.1
+        - to: 10.0.0.0/24
+          via: 192.168.50.10
