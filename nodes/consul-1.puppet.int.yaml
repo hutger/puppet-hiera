@@ -91,9 +91,7 @@ roles::squid::server::http_accesses:
   'all':
     action          : 'deny'
 
-
----
-
+    
 netplan::version: 2
 netplan::renderer: networkd
 netplan::purge_config: false
