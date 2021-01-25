@@ -91,11 +91,11 @@ roles::squid::server::http_accesses:
   'all':
     action          : 'deny'
 
-    
+
 netplan::version: 2
 netplan::renderer: networkd
 netplan::purge_config: false
-netplan::config_file: '/etc/netplan/01-custom.yaml'
+netplan::config_file: '/etc/netplan/02-custom.yaml'
 netplan::ethernets:
     eth0:
       dhcp4: yes
