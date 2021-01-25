@@ -100,7 +100,7 @@ profiles::netplan::config_file: '/etc/netplan/02-custom.yaml'
 profiles::netplan::ethernets:
   ethernets:
     eth0:
-      dhcp4: yes
+      dhcp4: no
       addresses:
         - 192.168.50.101/24
       nameservers:
