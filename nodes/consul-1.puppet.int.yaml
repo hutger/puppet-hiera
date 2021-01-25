@@ -98,6 +98,7 @@ roles::squid::server::http_accesses:
 netplan::version: 2
 netplan::renderer: networkd
 netplan::purge_config: true
+netplan::config_file: '/etc/netplan/01-custom.yaml'
 netplan::ethernets:
     eth0:
       dhcp4: yes
