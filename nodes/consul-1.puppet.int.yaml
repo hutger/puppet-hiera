@@ -2,7 +2,7 @@
 classes:
   - roles::haproxy::server
   - roles::squid::server
-  - netplan
+  - profiles::netplan
 
 
 
